@@ -313,14 +313,15 @@ DAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
                 	vertPrimPosy = itVertex->y();
                 	vertPrimPosz = itVertex->z();
 			pv = (*itVertex);
+			vertTrackOld = vertTrackNew;    
         	}                                       
-        	vertTrackOld = vertTrackNew;    
   	}                                 
 //	vertPrimPosx = 0.0;
 //	vertPrimPosy = 0.0;
 //	vertPrimPosz = 0.0;
         XYZPoint PrimVert = {vertPrimPosx,vertPrimPosy,vertPrimPosz};
- 
+ 	
+ 	//Here's where we cycle over all pairs of transient tracks
 	for (unsigned int i = 0; i < ttracks.size(); i++)
 	{
 		for (unsigned int j = 0; j < ttracks.size(); j++)
